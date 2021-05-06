@@ -5,6 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#B8B6B6</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_400">#720D5D</color>
+    <color name="black_200">#060606</color>
+    <color name="statusbar_color">#4E0D3A</color>
+    <color name="tollbar_color">#5D1049</color>
+    <color name="search_colors">#D7D7D7</color>
+    <color name="recyclerscroll">#30C20E</color>
+    <color name="view_color">#00C6C7C5</color>
+    <color name="texthistory_color">#F6E2E3E1</color>
 </resources>
