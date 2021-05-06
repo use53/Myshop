@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "497412856437",
+    "project_id": "shoptelfon",
+    "storage_bucket": "shoptelfon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497412856437:android:84028cd7ce548c9e57b63c",
+        "android_client_info": {
+          "package_name": "uz.telefonshop.shoptelfon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497412856437-vjk0j27dtpja6fvpr5jbf8kt416grai8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfdViGkvrwE2kovduyqVf4wnRsnAVDbNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497412856437-vjk0j27dtpja6fvpr5jbf8kt416grai8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
