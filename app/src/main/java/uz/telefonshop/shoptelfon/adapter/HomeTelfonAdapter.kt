@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.squareup.picasso.Picasso
 import uz.telefonshop.shoptelfon.databinding.CarsMoneyBinding
 import uz.telefonshop.shoptelfon.model.Telfon
 import uz.telefonshop.shoptelfon.onClick.IonClickListener

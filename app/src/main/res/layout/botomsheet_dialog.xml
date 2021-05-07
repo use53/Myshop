@@ -3,7 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:id="@+id/lc_color"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_color_lens_24"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rangi"
+            android:fontFamily="@font/ollkornariableontwght"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black_200"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:id="@+id/lc_modeli"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_mode_24"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_modeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="modeli"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/ollkornariableontwght"
+            android:textColor="@color/black_200"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:id="@+id/lc_call"
@@ -24,6 +74,7 @@
             android:layout_height="wrap_content"
             android:text="Qung'iroq"
             android:textSize="18sp"
+            android:fontFamily="@font/ollkornariableontwght"
             android:layout_marginStart="20dp"
             android:textColor="@color/black_200"/>
 
@@ -35,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
+
         android:layout_marginBottom="30dp"
         android:orientation="horizontal">
 
@@ -49,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Saqlash"
+            android:fontFamily="@font/ollkornariableontwght"
             android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:textColor="@color/black_200"/>

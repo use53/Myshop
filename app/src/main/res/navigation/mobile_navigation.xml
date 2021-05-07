@@ -22,4 +22,8 @@
         android:name="uz.telefonshop.shoptelfon.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addcard_navigation"
+        android:name="uz.mybiometric.firebasemikit.mainui.carradd.CarAddFragment"
+        tools:layout="@layout/caradd_fragment"/>
 </navigation>

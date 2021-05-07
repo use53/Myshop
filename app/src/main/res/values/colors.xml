@@ -15,4 +15,5 @@
     <color name="recyclerscroll">#30C20E</color>
     <color name="view_color">#00C6C7C5</color>
     <color name="texthistory_color">#F6E2E3E1</color>
+    <color name="splash_color">#CEDC39</color>
 </resources>

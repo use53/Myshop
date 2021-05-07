@@ -6,26 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import uz.telefonshop.shoptelfon.R
+import uz.telefonshop.shoptelfon.adapter.HistoryAdapter
+import uz.telefonshop.shoptelfon.databinding.FragmentGalleryBinding
 
-class GalleryFragment : Fragment() {
+class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private var galeryFragment:FragmentGalleryBinding?=null
+   private val history by lazy { HistoryAdapter() }
+    private val viewmodel:GalleryViewModel by activityViewModels()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val binding=FragmentGalleryBinding.bind(view)
+          galeryFragment=binding
+        binding.recGallery.adapter=history
+        viewmodel.onHistory()
+        viewmodel.historyLd.observe(viewLifecycleOwner, Observer {
+            if (!it.isEmpty()){
+                history.submitList(it)
+                binding.tvGalleryHistory.visibility=View.GONE
+                binding.recGallery.visibility=View.VISIBLE
+            }
         })
-        return root
+
     }
 }

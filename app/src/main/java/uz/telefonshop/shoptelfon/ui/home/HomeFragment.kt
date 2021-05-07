@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -24,6 +25,7 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapController
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
+import uz.mybiometric.firebasemikit.mainui.carradd.NetworkStatus
 import uz.mybiometric.firebasemikit.utilis.WatcherSearch
 import uz.telefonshop.shoptelfon.R
 import uz.telefonshop.shoptelfon.adapter.HomeTelfonAdapter
@@ -44,10 +46,17 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
     private  val fromBottom: Animation by lazy { AnimationUtils.loadAnimation(requireActivity(),R.anim.from_bottom_anim) }
     private  val toBottom : Animation by lazy { AnimationUtils.loadAnimation(requireActivity(),R.anim.to_bottom_anim) }
     private val homeViewModel:HomeViewModel by activityViewModels()
+    private val navCotroller by lazy { Navigation.findNavController(requireActivity(),R.id.nav_host_fragment) }
 
     override fun onStart() {
         super.onStart()
         homeViewModel.readTalfon("")
+        homeViewModel.networkStatus.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is NetworkStatus.onLoading->showLoading()
+                is NetworkStatus.onSuccess->showSuccess()
+            }
+        })
         homeViewModel.searchItem.observe(viewLifecycleOwner, Observer {
             adapter=HomeTelfonAdapter(it,this)
             adapter!!.startListening()
@@ -57,6 +66,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         })
 
     }
+
+    private fun showSuccess() {
+        homeBinding!!.codesaveAccount.visibility=View.INVISIBLE
+    }
+
+    private fun showLoading() {
+        homeBinding!!.codesaveAccount.visibility=View.VISIBLE
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding=FragmentHomeBinding.bind(view)
@@ -75,7 +93,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
             adapter!!.startListening()
             homeBinding!!.recHome.adapter=adapter
             Log.d("tag", "itemSearchRecView: ${it}")
-
         })
 
     }
@@ -84,6 +101,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         homeBinding!!.edSearch.addTextChangedListener(object : WatcherSearch(){
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 homeViewModel.readTalfon(s.toString())
+            adapter!!.stopListening()
             }
         })
     }
@@ -94,10 +112,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
             OnAddButtonClick()
         }
         homeBinding!!.editF.setOnClickListener {
-           // navCotroller.navigate(R.id.caradd_navigation)
+           navCotroller.navigate(R.id.addcard_navigation)
         }
         homeBinding!!.settingF.setOnClickListener {
-            Toast.makeText(requireContext(),"Search", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(),"yangilash huquqiga ega emassiz", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -145,9 +163,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
 
         mapController!!.setZoom(9)
         val list=ArrayList<GeoPoint>()
-        val gPt = GeoPoint(41.32853 ,69.34484)
-        val point = GeoPoint(41.36561,69.22562)
-        val pointBank= GeoPoint(41.33671,69.27812)
+        val gPt = GeoPoint(41.33879, 69.27197)
+        val point = GeoPoint(41.28914, 69.19068)
+        val pointBank= GeoPoint(41.24827, 69.16415)
         list.add(gPt)
         list.add(point)
         list.add(pointBank)
@@ -162,9 +180,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         endmarker.position=point
         markers.position=pointBank
 
-        startmarker.title="Ipotika Bank"
-        endmarker.title="Asaka Bank"
-        markers.title="Milliy Bank"
+        startmarker.title="Malika Telefon Bazar"
+        endmarker.title="telefon bozor "
+        markers.title="Abu sahiy bozor "
         startmarker.isDraggable=true
         endmarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
 
@@ -185,21 +203,25 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         val view=BotomsheetDialogBinding.inflate(LayoutInflater.from(requireContext()),null,false)
         val dialog= BottomSheetDialog(requireContext())
         dialog.setContentView(view.root)
+        view.tvModeli.text=telfon.model
+        view.tvColor.text=telfon.color
         view.lcCall.setOnClickListener {
             Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+telfon.callnum)).apply {
                 startActivity(this)
             }
         }
         view.lcSave.setOnClickListener {
-            Intent(Intent.ACTION_DIAL,
-                Uri.fromParts("sms:",telfon.callnum,null)).apply {
-                startActivity(this)
-            }
+            homeViewModel.onSaveHistory(telfon)
             dialog.dismiss()
         }
 
         dialog.show()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        adapter!!.stopListening()
     }
 
 }
