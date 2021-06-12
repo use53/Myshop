@@ -35,10 +35,10 @@
     app:layout_constraintTop_toBottomOf="@+id/moto_image"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:textSize="20sp"
+    android:textSize="18sp"
         android:fontFamily="@font/baloobold"
     android:textColor="@color/white"
-    android:text="ONLINE MAGAZIN "
+    android:text="ELEKTR APPARATLAR SAVDOSI"
     />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_first"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:text="turli telfonlar arzon narxlarda "
+        android:text="Eng arzon elektronika savdosi"
         />
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_splash"

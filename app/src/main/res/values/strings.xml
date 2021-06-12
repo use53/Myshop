@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Online Magazin</string>
+    <string name="app_name">Online Savdo</string>
     <string name="title_activity_shop">ShopActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,9 +7,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-    <string name="menu_home">uy sahifa</string>
-    <string name="menu_gallery">Saqlangan</string>
+    <string name="menu_home">Uy sahifa</string>
+    <string name="menu_gallery">Saqlash</string>
     <string name="menu_slideshow">Yordam</string>
-    <string name="text">"Dastur online magazin bulib bu yerda biz turli xil telfonlarni topishimz munkin buladi va biz ularga online buyitma berishimiz munkin biz uzimizga yoqqan telfonni saqlab quya olamiz uzimizning dasturnimizni xotirasiga saqlab quya olamiz qoqqan telfonni markasiga qarab uni narxi haqida malumotni qung'iroq orqali olishimiz ham munkin va biz online buyitma qila olamiz dasturda biz buyurtmaga qarab qungiroq orqali biz bilan bog'lanishadi buyurtmaga qarab xodimlar aloqaga chiqishadi va malumotga qarab tulov amalga oshirilgandan sung buyurtma bajariladi "</string>
+    <string name="text">"Dastur online savdo bo'lib, bu yerda siz turli xil turdagi  telfon va kompyuterlarni topishingiz munkin bo'ladi va siz ularga online buyurtma berishingiz munkin. Siz o'zingiz yoqtirgan telefon yoki kompyuterlarni saqlab qo'ya olasiz. Shaxsiy xotirada saqlab qo'ya olasiz siz yoqtirgan telefon yoki kompyuterning markasiga qarab uni narxi haqida ma'lumotni qo'ng'iroq orqali olishingiz ham munkin va siz online buyurtma qila olasiz. Dasturda biz buyurtmaga qarab qo'ngiroq orqali siz bilan bog'lanishadi va buyurtmaga qarab xodimlar aloqaga chiqishadi va malumotga qarab to'lov amalga oshirilgandan so'ng, buyurtma bajariladi! "</string>
 </resources>

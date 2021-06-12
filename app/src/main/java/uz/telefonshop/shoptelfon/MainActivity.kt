@@ -30,19 +30,11 @@ class MainActivity : AppCompatActivity() {
                       val connect=snapshot.getValue(Boolean::class.java)?:false
                       if (connect){
                           Intent(this@MainActivity,ShopActivity::class.java).apply {
-                              startActivity(this)
-                          }
+                              startActivity(this) }
                           finish()
 
                       }else{
-                          Toast.makeText(
-                                  this@MainActivity,
-                                  "internet bilan aloqa yuq ",
-                                  Toast.LENGTH_SHORT
-                          ).show()
-                      }
-                  }
-              })
+                          Toast.makeText(this@MainActivity, "internet bilan aloqa yuq ", Toast.LENGTH_SHORT).show() } } })
           },3_000)
 
     }

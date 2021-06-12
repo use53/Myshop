@@ -7,16 +7,13 @@ import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.osmdroid.config.Configuration
@@ -31,6 +28,7 @@ import uz.telefonshop.shoptelfon.R
 import uz.telefonshop.shoptelfon.adapter.HomeTelfonAdapter
 import uz.telefonshop.shoptelfon.databinding.BotomsheetDialogBinding
 import uz.telefonshop.shoptelfon.databinding.FragmentHomeBinding
+
 import uz.telefonshop.shoptelfon.model.Telfon
 import uz.telefonshop.shoptelfon.onClick.IonClickListener
 
@@ -122,7 +120,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
     private fun OnAddButtonClick() {
         setVisibility(closed)
         setAnimation(closed)
-        closed = !closed;
+        closed = !closed
     }
     private fun setAnimation(closed:Boolean) {
         if(!closed){
@@ -156,11 +154,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         homeBinding!!.mapView.setMultiTouchControls(true)
         homeBinding!!.mapView.setUseDataConnection(true)
         homeBinding!!.mapView.invalidate()
-
-
-
         mapController = homeBinding!!.mapView.controller as MapController?
-
         mapController!!.setZoom(9)
         val list=ArrayList<GeoPoint>()
         val gPt = GeoPoint(41.33879, 69.27197)
@@ -174,23 +168,17 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
         val startmarker= Marker( homeBinding!!.mapView)
         val endmarker= Marker (homeBinding!!.mapView)
         val markers= Marker( homeBinding!!.mapView)
-
-
         startmarker.position=gPt
         endmarker.position=point
         markers.position=pointBank
-
         startmarker.title="Malika Telefon Bazar"
         endmarker.title="telefon bozor "
         markers.title="Abu sahiy bozor "
         startmarker.isDraggable=true
         endmarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-
-
         homeBinding!!.mapView.overlays.add(startmarker)
         homeBinding!!.mapView.overlays.add(endmarker)
         homeBinding!!.mapView.overlays.add(markers)
-
         val livedate= MutableLiveData<Polyline>()
         val markma=MarkerTask(list,livedate,requireContext())
         markma.start()
@@ -200,7 +188,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), IonClickListener {
     }
 
     override fun onCilickItem(telfon: Telfon) {
-        val view=BotomsheetDialogBinding.inflate(LayoutInflater.from(requireContext()),null,false)
+        val view= BotomsheetDialogBinding.inflate(LayoutInflater.from(requireContext()),null,false)
         val dialog= BottomSheetDialog(requireContext())
         dialog.setContentView(view.root)
         view.tvModeli.text=telfon.model

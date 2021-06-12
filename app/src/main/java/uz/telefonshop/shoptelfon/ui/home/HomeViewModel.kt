@@ -43,15 +43,11 @@ class HomeViewModel(app:Application) :AndroidViewModel(app){
                   _networkStatus.postValue(NetworkStatus.onSuccess)
               }
 
-
     }
-
     val searchItem:LiveData<FirebaseRecyclerOptions<Telfon>>
     get() = _ldTelfon
     val networkStatus:LiveData<NetworkStatus>
         get() = _networkStatus
-
-
 
     fun onSaveHistory(telfon: Telfon){
         val carHistory=CarHistory(telfon.model,

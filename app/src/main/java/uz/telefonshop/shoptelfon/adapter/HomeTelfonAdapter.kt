@@ -12,31 +12,21 @@ import uz.telefonshop.shoptelfon.onClick.IonClickListener
 
 class HomeTelfonAdapter (options: FirebaseRecyclerOptions<Telfon>,val ionClickListener: IonClickListener):
     FirebaseRecyclerAdapter<Telfon, HomeTelfonAdapter.Vh>(options){
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
         val view=CarsMoneyBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return Vh(view,ionClickListener)
-    }
-
+        return Vh(view,ionClickListener) }
     override fun onBindViewHolder(holder: Vh, position: Int, model: Telfon) {
         holder.onBind(model)
      }
-
     class Vh(val view:CarsMoneyBinding,ionClickListener: IonClickListener): RecyclerView.ViewHolder(view.root){
         private var carModel:Telfon?=null
-
         init {
             itemView.setOnClickListener {
                 carModel?.let { it1 -> ionClickListener.onCilickItem(it1) }
-            }
-        }
+            } }
         fun onBind(telfon: Telfon){
           carModel=telfon
             Glide.with(view.root)
                 .load(telfon.image)
                 .into(view.imageCars)
-             view.tvMoney.text="${telfon.money} 00.so'm"
-
-        }
-    }
-}
+             view.tvMoney.text="${telfon.money} 00.so'm" } } }
